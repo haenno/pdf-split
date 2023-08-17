@@ -1,6 +1,6 @@
 """This script walks through a folder of PDF files and splits each file into individual pages.
 The resulting pages are saved in a separate folder. Any files that cannot be processed
-due to  -> Errors are saved in a separate  -> Error folder.
+due to errors are saved in a separate error folder.
 """
 import os
 
@@ -132,8 +132,9 @@ Pages_{start_page+1}_to_{end_page+1}.{PDF_FILE_EXTENSION}"
                 print(f" --------> Writing file '{splitted_pdf_filename}'...")
                 splitted_pdf.write(output)  # type: ignore[arg-type]
 
-            # finally move the original file to the finished folder
-            move_file(pdf, os.path.join(FINISHED_DIR, os.path.basename(pdf)))
+        print(f" -> Finished with {pdf}!")
+        # finally move the original file to the finished folder
+        move_file(pdf, os.path.join(FINISHED_DIR, os.path.basename(pdf)))
 
 
 if __name__ == "__main__":
